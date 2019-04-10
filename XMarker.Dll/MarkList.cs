@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using XMarker.DLL;
 
-namespace X_Marker.Dll
+namespace XMarker.DLL
 {
     public class MarkList
     {
         private readonly List<Mark> marks;
         private readonly Mark _markDemo;
-        public MarkList(Mark markDemo)
+        private MarkList(Mark markDemo)
         {
             _markDemo = markDemo;
         }
@@ -46,7 +42,7 @@ namespace X_Marker.Dll
         public MarkList(Mark markDemo, List<string> list) : this(markDemo)
         {
             marks = new List<Mark>();
-            foreach (var text in list)
+            foreach (string text in list)
             {
                 marks.Add(new Mark
                 {

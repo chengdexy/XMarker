@@ -4,12 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using XMarker.DLL;
 
-namespace XMarker.Dll
+namespace XMarker.DLL
 {
     public class MarkFactory
     {
@@ -45,7 +41,7 @@ namespace XMarker.Dll
         private bool CreateMarkedFile(Mark mark, string source, string target)
         {
             var sourceName = Path.GetFileNameWithoutExtension(source);
-            var targetName = sourceName + "_" + mark.Text;
+            var targetName = $"({mark.Text}){sourceName}";
             var sourceEx = Path.GetExtension(source);
             var targertFullPath = target + "\\" + targetName + sourceEx;
 

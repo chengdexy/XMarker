@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Words">
-      <HintPath>..\XMarker\DLL\Aspose.Words.dll</HintPath>
+      <HintPath>..\..\..\..\OneDrive\dlls\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,10 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
     <Compile Include="Mark.cs" />
     <Compile Include="MarkFactory.cs" />
+    <Compile Include="MarkKind.cs" />
     <Compile Include="MarkList.cs" />
+    <Compile Include="TextKind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.LoggerList = new System.Windows.Forms.ListBox();
             this.StartButton = new System.Windows.Forms.Button();
@@ -56,7 +57,7 @@
             this.MarkColorLabel = new System.Windows.Forms.Label();
             this.MarkColorPicture = new System.Windows.Forms.PictureBox();
             this.MarkKindLabel = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.MarkKindGroup = new System.Windows.Forms.GroupBox();
             this.NumberRadio = new System.Windows.Forms.RadioButton();
             this.ListRadio = new System.Windows.Forms.RadioButton();
             this.SolidRadio = new System.Windows.Forms.RadioButton();
@@ -70,6 +71,11 @@
             this.TargetFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.MarkFontDialog = new System.Windows.Forms.FontDialog();
             this.MarkColorDialog = new System.Windows.Forms.ColorDialog();
+            this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ListSaveDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ListOpenDialog = new System.Windows.Forms.OpenFileDialog();
+            this.PrintButton = new System.Windows.Forms.Button();
+            this.PrintDialog = new System.Windows.Forms.PrintDialog();
             this.groupBox1.SuspendLayout();
             this.OfficeGroup.SuspendLayout();
             this.NumberGroup.SuspendLayout();
@@ -79,11 +85,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.MarkRotationNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkSizeNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkColorPicture)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.MarkKindGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.PrintButton);
             this.groupBox1.Controls.Add(this.LoggerList);
             this.groupBox1.Controls.Add(this.StartButton);
             this.groupBox1.Controls.Add(this.OfficeGroup);
@@ -99,7 +107,7 @@
             this.groupBox1.Controls.Add(this.MarkColorLabel);
             this.groupBox1.Controls.Add(this.MarkColorPicture);
             this.groupBox1.Controls.Add(this.MarkKindLabel);
-            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.MarkKindGroup);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.SourceLabel);
             this.groupBox1.Controls.Add(this.TargetText);
@@ -128,10 +136,11 @@
             // 
             this.StartButton.Location = new System.Drawing.Point(20, 305);
             this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(75, 104);
+            this.StartButton.Size = new System.Drawing.Size(75, 49);
             this.StartButton.TabIndex = 23;
             this.StartButton.Text = "Go!!";
             this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // OfficeGroup
             // 
@@ -318,7 +327,6 @@
             this.SolidText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SolidText.Location = new System.Drawing.Point(89, 20);
             this.SolidText.Name = "SolidText";
-            this.SolidText.ReadOnly = true;
             this.SolidText.Size = new System.Drawing.Size(158, 21);
             this.SolidText.TabIndex = 5;
             // 
@@ -446,16 +454,16 @@
             this.MarkKindLabel.TabIndex = 7;
             this.MarkKindLabel.Text = "水印种类：";
             // 
-            // groupBox2
+            // MarkKindGroup
             // 
-            this.groupBox2.Controls.Add(this.NumberRadio);
-            this.groupBox2.Controls.Add(this.ListRadio);
-            this.groupBox2.Controls.Add(this.SolidRadio);
-            this.groupBox2.Location = new System.Drawing.Point(89, 76);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(307, 94);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
+            this.MarkKindGroup.Controls.Add(this.NumberRadio);
+            this.MarkKindGroup.Controls.Add(this.ListRadio);
+            this.MarkKindGroup.Controls.Add(this.SolidRadio);
+            this.MarkKindGroup.Location = new System.Drawing.Point(89, 76);
+            this.MarkKindGroup.Name = "MarkKindGroup";
+            this.MarkKindGroup.Size = new System.Drawing.Size(307, 94);
+            this.MarkKindGroup.TabIndex = 6;
+            this.MarkKindGroup.TabStop = false;
             // 
             // NumberRadio
             // 
@@ -565,6 +573,36 @@
             this.MarkColorDialog.AllowFullOpen = false;
             this.MarkColorDialog.Color = System.Drawing.Color.LightGray;
             // 
+            // ErrorProvider
+            // 
+            this.ErrorProvider.ContainerControl = this;
+            // 
+            // ListSaveDialog
+            // 
+            this.ListSaveDialog.DefaultExt = "txt";
+            this.ListSaveDialog.Filter = "纯文本文件|*.txt";
+            this.ListSaveDialog.Title = "导出单位列表为纯文本文件";
+            // 
+            // ListOpenDialog
+            // 
+            this.ListOpenDialog.DefaultExt = "txt";
+            this.ListOpenDialog.Filter = "纯文本文件|*.txt";
+            this.ListOpenDialog.Title = "导入单位名称列表";
+            // 
+            // PrintButton
+            // 
+            this.PrintButton.Location = new System.Drawing.Point(20, 360);
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.Size = new System.Drawing.Size(75, 49);
+            this.PrintButton.TabIndex = 25;
+            this.PrintButton.Text = "Print";
+            this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
+            // 
+            // PrintDialog
+            // 
+            this.PrintDialog.UseEXDialog = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -573,6 +611,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "MainForm";
             this.Text = "XMarker";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.OfficeGroup.ResumeLayout(false);
@@ -586,8 +626,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.MarkRotationNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkSizeNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkColorPicture)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.MarkKindGroup.ResumeLayout(false);
+            this.MarkKindGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -603,7 +644,7 @@
         private System.Windows.Forms.FolderBrowserDialog TargetFolderDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label SourceLabel;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox MarkKindGroup;
         private System.Windows.Forms.RadioButton NumberRadio;
         private System.Windows.Forms.RadioButton ListRadio;
         private System.Windows.Forms.RadioButton SolidRadio;
@@ -636,6 +677,11 @@
         private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button StartButton;
         private System.Windows.Forms.ListBox LoggerList;
+        private System.Windows.Forms.ErrorProvider ErrorProvider;
+        private System.Windows.Forms.SaveFileDialog ListSaveDialog;
+        private System.Windows.Forms.OpenFileDialog ListOpenDialog;
+        private System.Windows.Forms.Button PrintButton;
+        private System.Windows.Forms.PrintDialog PrintDialog;
     }
 }
 
