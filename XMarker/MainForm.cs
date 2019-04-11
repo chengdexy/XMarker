@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace XMarker
     public partial class MainForm : Form
     {
         private readonly string settingsFilePath = Application.StartupPath + @"\settings.ini";
+        public bool OnPrinting { get; set; } = false;
         public MainForm()
         {
             InitializeComponent();
@@ -282,7 +284,7 @@ namespace XMarker
             //
             // 固定文本水印框
             //
-            if (string.IsNullOrEmpty(SolidText.Text.Trim()))
+            if (SolidRadio.Checked && string.IsNullOrEmpty(SolidText.Text.Trim()))
             {
                 ErrorProvider.SetError(SolidText, "请输入水印文字");
                 return false;
@@ -316,6 +318,11 @@ namespace XMarker
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (OnPrinting)
+            {
+                e.Cancel = true;
+                return;
+            }
             if (MessageBox.Show("确定退出？", "退出", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (!SaveSettingsToIniFile(out string err))
@@ -419,9 +426,44 @@ namespace XMarker
             }
         }
 
-        private void PrintButton_Click(object sender, EventArgs e)
+        private async void PrintButton_Click(object sender, EventArgs e)
         {
+            string folderForPrint;
+            if (Directory.Exists(TargetText.Text))
+            {
+                folderForPrint = TargetText.Text;
+            }
+            else
+            {
+                if (PrintFolderDialog.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+                folderForPrint = PrintFolderDialog.SelectedPath;
+            }
+            if (PrintDialog.ShowDialog() == DialogResult.OK)
+            {
+                PrinterSettings settings = PrintDialog.PrinterSettings;
+                MarkPrinter printer = new MarkPrinter(folderForPrint, settings);
+                var progress = new Progress<ProgressPartialResult>();
+                progress.ProgressChanged += new EventHandler<ProgressPartialResult>(progress_ProgressChanged);
+                ShowLog("[开始]与打印机通信中,请勿关闭程序!");
+                PrintButton.Enabled = false;
+                OnPrinting = true;
+                bool printResult = await printer.PrintAsync(progress);
+                ShowLog("[完成]全部文件已传送到打印机!");
+                PrintButton.Enabled = true;
+                OnPrinting = false;
+                if (!printResult)
+                {
+                    MessageBox.Show("空文件夹");
+                }
+            }
+        }
 
+        private void progress_ProgressChanged(object sender, ProgressPartialResult e)
+        {
+            ShowLog($"正在将文件传送到打印机:{e.Current}/{e.Total}");
         }
     }
 }

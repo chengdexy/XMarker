@@ -49,6 +49,8 @@
     <Compile Include="MarkFactory.cs" />
     <Compile Include="MarkKind.cs" />
     <Compile Include="MarkList.cs" />
+    <Compile Include="MarkPrinter.cs" />
+    <Compile Include="ProgressPartialResult.cs" />
     <Compile Include="TextKind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMarker.Dll", "XMarker.Dll\XMarker.Dll.csproj", "{06723998-6840-413C-BA0C-E9247A93924D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMarker.Test", "XMarker.Test\XMarker.Test.csproj", "{137F274B-611E-45FC-AF5E-4EBF1010B917}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMarker", "XMarker\XMarker.csproj", "{583993BD-6952-4577-832F-1303C905CC26}"
 EndProject
 Global
@@ -15,16 +13,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{06723998-6840-413C-BA0C-E9247A93924D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06723998-6840-413C-BA0C-E9247A93924D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06723998-6840-413C-BA0C-E9247A93924D}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{06723998-6840-413C-BA0C-E9247A93924D}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{06723998-6840-413C-BA0C-E9247A93924D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06723998-6840-413C-BA0C-E9247A93924D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{137F274B-611E-45FC-AF5E-4EBF1010B917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{137F274B-611E-45FC-AF5E-4EBF1010B917}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{137F274B-611E-45FC-AF5E-4EBF1010B917}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{137F274B-611E-45FC-AF5E-4EBF1010B917}.Release|Any CPU.Build.0 = Release|Any CPU
-		{583993BD-6952-4577-832F-1303C905CC26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{583993BD-6952-4577-832F-1303C905CC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583993BD-6952-4577-832F-1303C905CC26}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{583993BD-6952-4577-832F-1303C905CC26}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{583993BD-6952-4577-832F-1303C905CC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{583993BD-6952-4577-832F-1303C905CC26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

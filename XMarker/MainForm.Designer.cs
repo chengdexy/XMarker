@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PrintButton = new System.Windows.Forms.Button();
             this.LoggerList = new System.Windows.Forms.ListBox();
             this.StartButton = new System.Windows.Forms.Button();
             this.OfficeGroup = new System.Windows.Forms.GroupBox();
@@ -74,8 +76,8 @@
             this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.ListSaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.ListOpenDialog = new System.Windows.Forms.OpenFileDialog();
-            this.PrintButton = new System.Windows.Forms.Button();
             this.PrintDialog = new System.Windows.Forms.PrintDialog();
+            this.PrintFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1.SuspendLayout();
             this.OfficeGroup.SuspendLayout();
             this.NumberGroup.SuspendLayout();
@@ -120,6 +122,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "v1.0";
+            // 
+            // PrintButton
+            // 
+            this.PrintButton.Location = new System.Drawing.Point(20, 360);
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.Size = new System.Drawing.Size(75, 49);
+            this.PrintButton.TabIndex = 25;
+            this.PrintButton.Text = "批量\r\n打印\r\n向导";
+            this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
             // 
             // LoggerList
             // 
@@ -589,28 +601,28 @@
             this.ListOpenDialog.Filter = "纯文本文件|*.txt";
             this.ListOpenDialog.Title = "导入单位名称列表";
             // 
-            // PrintButton
-            // 
-            this.PrintButton.Location = new System.Drawing.Point(20, 360);
-            this.PrintButton.Name = "PrintButton";
-            this.PrintButton.Size = new System.Drawing.Size(75, 49);
-            this.PrintButton.TabIndex = 25;
-            this.PrintButton.Text = "Print";
-            this.PrintButton.UseVisualStyleBackColor = true;
-            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
-            // 
             // PrintDialog
             // 
             this.PrintDialog.UseEXDialog = true;
             // 
+            // PrintFolderDialog
+            // 
+            this.PrintFolderDialog.Description = "选择要打印的文件夹";
+            this.PrintFolderDialog.ShowNewFolderButton = false;
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(742, 450);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Text = "XMarker";
+            this.Opacity = 0.95D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "XMarker v1.0.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
@@ -682,6 +694,7 @@
         private System.Windows.Forms.OpenFileDialog ListOpenDialog;
         private System.Windows.Forms.Button PrintButton;
         private System.Windows.Forms.PrintDialog PrintDialog;
+        private System.Windows.Forms.FolderBrowserDialog PrintFolderDialog;
     }
 }
 

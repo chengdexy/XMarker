@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Aspose.Words;
+using System;
+using System.Drawing.Printing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace XMarker.Test
 {
@@ -6,7 +10,8 @@ namespace XMarker.Test
     {
         private static void Main()
         {
-            Console.WriteLine("......");
+            Console.WriteLine(Directory.Exists(""));
+
             Console.ReadKey();
         }
     }
