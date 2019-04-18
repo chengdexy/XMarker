@@ -55,7 +55,7 @@ namespace XMarker
 
         private void AddOfficeButton_Click(object sender, EventArgs e)
         {
-            string text = AddOfficeText.Text;
+            string text = AddOfficeText.Text.Trim();
             if (string.IsNullOrEmpty(text))
             {
                 return;
@@ -66,7 +66,7 @@ namespace XMarker
                 return;
             }
             AddOfficeText.Clear();
-            OfficeList.Items.Insert(0, AddOfficeText.Text.Trim());
+            OfficeList.Items.Insert(0, text);
             OfficeList.SelectedIndex = 0;
         }
 

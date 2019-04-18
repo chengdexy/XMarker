@@ -121,7 +121,7 @@
             this.groupBox1.Size = new System.Drawing.Size(718, 426);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "v1.0";
+            this.groupBox1.Text = "v1.03";
             // 
             // PrintButton
             // 
@@ -622,7 +622,7 @@
             this.Name = "MainForm";
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "XMarker v1.0.2";
+            this.Text = "XMarker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
